@@ -1,6 +1,5 @@
 package com.card.demo.entity;
 
-import java.io.Serializable;
 import java.time.LocalDate;
 
 import javax.persistence.CascadeType;
@@ -16,22 +15,20 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "domiciliaciones")
-public class Domiciliacion implements Serializable {
+@Table(name = "pago_servicios")
+public class PagoServicio {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private String email;
-    private LocalDate fecha_inicio;
-    private Boolean estatus;
-    private Double monto;
+    private double monto_pago;
+    private LocalDate fecha_pago;
     private int tarjetas_id;
-
-    // @OneToOne(cascade = { CascadeType.DETACH, CascadeType.REFRESH,
-    // CascadeType.MERGE, CascadeType.PERSIST })
-    // @JoinColumn(name = "pago_servicios_id")
-    // private PagoServicio pagoServicio;
+    private int tipo_servicios_id;
+    @OneToOne(cascade = { CascadeType.DETACH, CascadeType.REFRESH,
+            CascadeType.MERGE, CascadeType.PERSIST })
+    @JoinColumn(name = "domiciliaciones_id")
+    private Domiciliacion domiciliaciones;
 
 }
