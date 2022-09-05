@@ -20,4 +20,9 @@ public class ServiceDomiciliacionImp implements ServiceDomiciliacion {
         return (List<Domiciliacion>) domiciliacionDao.findAll();
     }
 
+    @Override
+    public List<Domiciliacion> activeByTarjeta(Long idTarjeta) {
+        return (List<Domiciliacion>) domiciliacionDao.activeByTarjeta(idTarjeta);
+    }
+
 }

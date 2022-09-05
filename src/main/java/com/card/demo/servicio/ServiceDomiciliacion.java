@@ -9,4 +9,6 @@ import com.card.demo.entity.Domiciliacion;
 @Service
 public interface ServiceDomiciliacion {
     public List<Domiciliacion> findAll();
+
+    public List<Domiciliacion> activeByTarjeta(Long idTarjeta);
 }
