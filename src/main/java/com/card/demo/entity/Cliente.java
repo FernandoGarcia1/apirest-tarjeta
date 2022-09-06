@@ -1,4 +1,5 @@
-package com.equipo4.difs.modelo;
+
+package com.card.demo.entity;
 
 import lombok.Getter;
 import lombok.Setter;

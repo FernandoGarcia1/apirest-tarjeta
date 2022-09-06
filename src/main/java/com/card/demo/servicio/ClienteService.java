@@ -1,7 +1,7 @@
-package com.equipo4.difs.servicios;
+package com.card.demo.servicio;
 
-import com.equipo4.difs.modelo.Cliente;
-import com.equipo4.difs.repositorios.ClienteRepository;
+import com.card.demo.dao.ClienteRepository;
+import com.card.demo.entity.Cliente;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
