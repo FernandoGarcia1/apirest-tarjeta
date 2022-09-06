@@ -1,7 +1,7 @@
-package com.equipo4.difs.controladores;
+package com.card.demo.web;
 
-import com.equipo4.difs.modelo.Cliente;
-import com.equipo4.difs.servicios.ClienteService;
+import com.card.demo.entity.Cliente;
+import com.card.demo.servicio.ClienteService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -69,7 +69,7 @@ public class ControlUsuarios {
         else return new ResponseEntity<>("El Curp del cliente no existe", HttpStatus.BAD_REQUEST);
     }
 
-    // editar cliente
+    // editar cliente aun estoy editando esto
     @PutMapping()
     public ResponseEntity<?> editarCliente (@RequestBody Cliente cliente) {
         // Se verifica que el cliente a actualizar si exista
