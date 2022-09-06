@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -76,5 +78,15 @@ public class PagoServicioController {
             return new ResponseEntity<>("No tienes pagos de servicios registrados en este mes.", HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(pagoServicio, HttpStatus.OK);
+    }
+
+    @PostMapping("/pagarServicio")
+    public ResponseEntity<?> payService(@RequestBody PagoServicio pagoServicio) {
+        pagoServicio.setDomiciliaciones(null); // Un pago de servicio no se puede domiciliar
+        if (pagoServicioService.createPagoServicio(pagoServicio)) {
+            return new ResponseEntity<>("Pago de servicio realizado.", HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("El pago de servicio no se pudo concretar.", HttpStatus.BAD_REQUEST);
+        }
     }
 }

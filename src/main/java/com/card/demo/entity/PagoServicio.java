@@ -24,6 +24,7 @@ public class PagoServicio {
     private long id;
     private double monto_pago;
     private LocalDate fecha_pago;
+
     @Column(name = "tarjetas_id")
     private int tarjetaId;
     private int tipo_servicios_id;

@@ -16,4 +16,5 @@ public interface ServicePagoServicio {
 
     public List<PagoServicio> findBetweenDates(int idTarjeta, LocalDate date);
 
+    public boolean createPagoServicio(PagoServicio p);
 }
