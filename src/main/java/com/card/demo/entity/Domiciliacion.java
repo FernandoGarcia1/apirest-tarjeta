@@ -24,6 +24,7 @@ public class Domiciliacion implements Serializable {
     private Boolean estatus;
     private Double monto;
     private int tarjetas_id;
+    private int tipo_servicios_id;
 
     // @OneToOne(cascade = { CascadeType.DETACH, CascadeType.REFRESH,
     // CascadeType.MERGE, CascadeType.PERSIST })

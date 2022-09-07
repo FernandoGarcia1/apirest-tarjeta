@@ -12,4 +12,8 @@ import com.card.demo.entity.Domiciliacion;
 public interface DomiciliacionDao extends CrudRepository<Domiciliacion, Long> {
     @Query(value = "Select * from domiciliaciones where tarjetas_id = ? and estatus = true", nativeQuery = true)
     List<Domiciliacion> activeByTarjeta(Long idTarjeta);
+
+    Boolean existsDomiciliacionById(Long id);
+
+    Domiciliacion findDomiciliacionById(Long id);
 }

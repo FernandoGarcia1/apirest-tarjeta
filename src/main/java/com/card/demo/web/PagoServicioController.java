@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -80,13 +81,33 @@ public class PagoServicioController {
         return new ResponseEntity<>(pagoServicio, HttpStatus.OK);
     }
 
-    @PostMapping("/pagarServicio")
+    @PostMapping("/pagarservicio")
     public ResponseEntity<?> payService(@RequestBody PagoServicio pagoServicio) {
-        pagoServicio.setDomiciliaciones(null); // Un pago de servicio no se puede domiciliar
+        // Un pago de servicio no se puede domiciliar
         if (pagoServicioService.createPagoServicio(pagoServicio)) {
             return new ResponseEntity<>("Pago de servicio realizado.", HttpStatus.OK);
         } else {
-            return new ResponseEntity<>("El pago de servicio no se pudo concretar.", HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(
+                    "El pago de servicio no se pudo concretar. Favor de revisar su saldo disponible",
+                    HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @PostMapping("/domiciliarpago")
+    public ResponseEntity<?> createDomiciliacion(@RequestBody Domiciliacion domiciliar) {
+        if (domiciliacionService.createDomiciliacion(domiciliar)) {
+            return new ResponseEntity<>("Domiciliacion creada. Y cobro realizado", HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("La domiciliacion no se ha podido concretar.", HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @PostMapping("/cancelardomiciliacion/{id}")
+    public ResponseEntity<?> cancelDomiciliacion(@PathVariable long id) {
+        if (domiciliacionService.cancelDomiciliacion(id)) {
+            return new ResponseEntity<>("Domiciliacion cancelada.", HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("Ha ocurrido un fallo al cancelar.", HttpStatus.BAD_REQUEST);
         }
     }
 }
