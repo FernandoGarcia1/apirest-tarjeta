@@ -69,13 +69,13 @@ public class ControlUsuarios {
         else return new ResponseEntity<>("El Curp del cliente no existe", HttpStatus.BAD_REQUEST);
     }
 
-    // editar cliente aun estoy editando esto
+    // editar cliente 
     @PutMapping()
     public ResponseEntity<?> editarCliente (@RequestBody Cliente cliente) {
         // Se verifica que el cliente a actualizar si exista
         if (clienteService.existeLlave(cliente.getCurp())==true){
             clienteService.setCliente(cliente);
-            return new ResponseEntity<>("Cliente con curp " + cliente.getCurp() + " eliminado",HttpStatus.OK);
+            return new ResponseEntity<>("Cliente con curp " + cliente.getCurp() + " actualizado",HttpStatus.OK);
         }
         else return new ResponseEntity<>("El cliente con curp: " +  cliente.getCurp()+ " no existe", HttpStatus.BAD_REQUEST);
     }
