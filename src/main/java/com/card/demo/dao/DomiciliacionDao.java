@@ -13,6 +13,9 @@ public interface DomiciliacionDao extends CrudRepository<Domiciliacion, Long> {
     @Query(value = "Select * from domiciliaciones where tarjetas_id = ? and estatus = true", nativeQuery = true)
     List<Domiciliacion> activeByTarjeta(Long idTarjeta);
 
+    @Query(value = "Select * from domiciliaciones where estatus = true", nativeQuery = true)
+    List<Domiciliacion> allActives();
+
     Boolean existsDomiciliacionById(Long id);
 
     Domiciliacion findDomiciliacionById(Long id);

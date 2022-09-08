@@ -29,7 +29,7 @@ public class PagoServicio {
     private int tarjetaId;
     private int tipo_servicios_id;
     @OneToOne(cascade = { CascadeType.DETACH, CascadeType.REFRESH,
-            CascadeType.MERGE, CascadeType.PERSIST })
+            CascadeType.MERGE })
     @JoinColumn(name = "domiciliaciones_id")
     private Domiciliacion domiciliaciones;
 

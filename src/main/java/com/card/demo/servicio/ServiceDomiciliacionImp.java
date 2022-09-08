@@ -77,4 +77,15 @@ public class ServiceDomiciliacionImp implements ServiceDomiciliacion {
         }
     }
 
+    @Override
+    public List<Domiciliacion> findAllActives() {
+        return domiciliacionDao.allActives();
+    }
+
+    @Override
+    public void saveDomiciliacion(Domiciliacion d) {
+        domiciliacionDao.save(d);
+
+    }
+
 }
