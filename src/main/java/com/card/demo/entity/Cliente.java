@@ -37,7 +37,13 @@ public class Cliente {
     private  Integer targeta_id;
 
     @Column(name = "fecha_nacimiento")
-    private  LocalDate fecha_nacimeinto;
+    private  LocalDate fecha_nacimiento;
+
+    /*
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @JoinColumn(name = "tarjetas_id")
+    private  Tarjeta targeta_id;
+    */
 
     public Cliente(String curp, String nombre, String apellidos, String correo, String telefono, Integer targeta_id, LocalDate fecha_nacimeinto) {
         this.curp = curp;
@@ -46,7 +52,7 @@ public class Cliente {
         this.correo = correo;
         this.telefono = telefono;
         this.targeta_id = targeta_id;
-        this.fecha_nacimeinto = fecha_nacimeinto;
+        this.fecha_nacimiento = fecha_nacimeinto;
     }
 
     public Cliente() {

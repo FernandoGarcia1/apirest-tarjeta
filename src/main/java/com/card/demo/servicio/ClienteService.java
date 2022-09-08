@@ -43,7 +43,7 @@ public class ClienteService {
         clienteTemp.setCorreo(cliente.getCorreo());
         clienteTemp.setTelefono(cliente.getTelefono());
         clienteTemp.setTargeta_id(clienteTemp.getTargeta_id());
-        clienteTemp.setFecha_nacimeinto(cliente.getFecha_nacimeinto());
+        clienteTemp.setFecha_nacimiento(cliente.getFecha_nacimiento());
         clienteRepository.save(clienteTemp);
     }
 }
