@@ -9,4 +9,14 @@ import com.card.demo.entity.Domiciliacion;
 @Service
 public interface ServiceDomiciliacion {
     public List<Domiciliacion> findAll();
+
+    public List<Domiciliacion> findAllActives();
+
+    public List<Domiciliacion> activeByTarjeta(Long idTarjeta);
+
+    public boolean createDomiciliacion(Domiciliacion d);
+
+    public void saveDomiciliacion(Domiciliacion d);
+
+    public boolean cancelDomiciliacion(long d); // cancelar domiciliacion
 }
